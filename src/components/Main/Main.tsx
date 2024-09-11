@@ -94,9 +94,9 @@ const Main: React.FC = () => {
             </div>
             <hr />
             <div className={styles.outputWrapper}>
-                <span className={styles.output}>
-                    {outputValue || <span className={styles.placeholder}>翻译结果</span>}
-                </span>
+                {outputValue
+                    ? <span className={styles.output}>{outputValue}</span>
+                    : <span className={styles.placeholder}>翻译结果</span>}
             </div>
         </div>
     );
