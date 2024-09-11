@@ -4,13 +4,14 @@
     max-width: 1080px;
     margin: 10vh auto;
     border-radius: 8px;
-    border: 1px solid rgb(224, 224, 224);
+    border: 1px solid var(--border-color);
     overflow: hidden;
 }
 
 .inputWrapper {
     flex: 1;
     padding: 1rem 1rem 10rem;
+    background-color: var(--input-background-color);
 }
 
 .input {
@@ -18,7 +19,8 @@
     border: none;
     outline: none;
     resize: none;
-    color: #333;
+    background: none;
+    color: var(--input-text-color);
     font-size: 18px;
     line-height: 28px;
     letter-spacing: 0.02em;
@@ -26,17 +28,21 @@
     overflow: hidden;
 }
 
+.input::placeholder {
+    color: var(--input-placeholder-color);
+}
+
 hr {
     width: 1px;
     border: none;
-    background-color: rgb(224, 224, 224);
+    background-color: var(--border-color);
     margin: 0;
 }
 
 .outputWrapper {
     flex: 1;
     padding: 1rem 1rem 10rem;
-    background-color: rgb(245, 245, 245);
+    background-color: var(--output-background-color);
 }
 
 .output {
@@ -46,7 +52,7 @@ hr {
     line-height: 28px;
     letter-spacing: 0.02em;
     white-space: pre-wrap;
-    color: #333;
+    color: var(--input-text-color);
 }
 
 .placeholder {
@@ -55,7 +61,7 @@ hr {
     font-size: 18px;
     line-height: 28px;
     letter-spacing: 0.02em;
-    color: rgb(117, 117, 117);
+    color: var(--input-placeholder-color);
 }
 
 @media (max-width: 768px) {

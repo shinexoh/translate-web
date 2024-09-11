@@ -3,19 +3,18 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
-    background-color: #fff;
-    border-bottom: 1px solid rgb(230, 230, 230);
+    background-color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .logo {
-    font-size: 1.7rem;
-    color: #000;
+    font-size: 1.6rem;
+    color: var(--icon-color);
     cursor: pointer;
-    transition: all 0.1s linear;
 }
 
 .logo:hover {
-    color: rgba(0, 0, 0, 0.5);
+    color: var(--icon-hover-color);
 }
 
 .links {
@@ -24,15 +23,21 @@
     gap: 15px;
 }
 
+.links button {
+    display: flex;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
 .link {
     font-size: 1.5rem;
-    color: #000;
-    cursor: pointer;
-    transition: all 0.1s linear;
+    color: var(--icon-color);
 }
 
 .link:hover {
-    color: rgba(0, 0, 0, 0.5);
+    color: var(--icon-hover-color);
 }
 
 @media (max-width: 768px) {
