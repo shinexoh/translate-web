@@ -18,6 +18,23 @@ export default tseslint.config(
       'react-refresh': reactRefresh,
     },
     rules: {
+      'quotes': ['warn', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }],
+      'semi': ['warn', 'always'],
+      'eol-last': ['warn', 'always'],
+      'no-multiple-empty-lines': ['warn', { max: 1, maxBOF: 0, maxEOF: 0 }],
+      'no-trailing-spaces': ['warn'],
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          "args": "all",
+          "argsIgnorePattern": "^_",
+          "caughtErrors": "all",
+          "caughtErrorsIgnorePattern": "^_",
+          "destructuredArrayIgnorePattern": "^_",
+          "varsIgnorePattern": "^_",
+          "ignoreRestSiblings": true
+        }
+      ],
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',

@@ -1,0 +1,76 @@
+.main {
+    display: flex;
+    width: 95%;
+    max-width: 1080px;
+    margin: 10vh auto;
+    border-radius: 8px;
+    border: 1px solid rgb(224, 224, 224);
+    overflow: hidden;
+}
+
+.inputWrapper {
+    flex: 1;
+    padding: 1rem 1rem 10rem;
+}
+
+.input {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    color: #333;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    padding: 0;
+    overflow: hidden;
+}
+
+hr {
+    width: 1px;
+    border: none;
+    background-color: rgb(224, 224, 224);
+    margin: 0;
+}
+
+.outputWrapper {
+    flex: 1;
+    padding: 1rem 1rem 10rem;
+    background-color: rgb(245, 245, 245);
+}
+
+.output {
+    display: inline-block;
+    width: 100%;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    white-space: pre-wrap;
+    color: #333;
+}
+
+.placeholder {
+    display: inline-block;
+    width: 100%;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    color: rgb(117, 117, 117);
+}
+
+@media (max-width: 768px) {
+    .main {
+        width: 90%;
+        flex-direction: column;
+    }
+
+    .inputWrapper,
+    .outputWrapper {
+        padding-bottom: 5rem;
+    }
+
+    hr {
+        height: 1px;
+        width: 100%;
+    }
+}

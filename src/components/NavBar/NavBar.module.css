@@ -1,0 +1,42 @@
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.logo {
+    font-size: 1.7rem;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.1s linear;
+}
+
+.logo:hover {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.link {
+    font-size: 1.5rem;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.1s linear;
+}
+
+.link:hover {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .navBar {
+        padding: 20px;
+    }
+}
