@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './Main.module.css';
 import ReactTextareaAutosize from 'react-textarea-autosize';
-import axios from 'axios';
+import axios, { CancelTokenSource } from 'axios';
 
 type TranslationResponse = {
     code: number;
@@ -18,6 +18,7 @@ const Main: React.FC = () => {
     const [outputValue, setOutputValue] = useState('');
 
     const timeoutRef = useRef<number | null>(null);
+    const cancelTokenRef = useRef<CancelTokenSource | null>(null);
     const inputRef = useRef<HTMLTextAreaElement>(null);
 
     // 获取 input 焦点
@@ -28,37 +29,48 @@ const Main: React.FC = () => {
         focusInput();
     }, []);
 
+    // 处理翻译
     const handleTranslation = async (text: string) => {
+        cancelTokenRef.current = axios.CancelToken.source();
+
         try {
             const response = await axios.post<TranslationResponse>(
                 'https://deeplx.11444.xyz/translate',
                 { text: text, target_lang: 'EN' },
-                { headers: { 'Content-Type': 'application/json' } }
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    cancelToken: cancelTokenRef.current.token,
+                }
             );
             if (response.data.code === 200) {
                 setOutputValue(response.data.data);
             }
         } catch (error) {
-            if (axios.isAxiosError(error)) {
-                setOutputValue('翻译失败' + error.message);
+            if (axios.isCancel(error)) {
+                return;
+            } else if (axios.isAxiosError(error)) {
+                setOutputValue('翻译失败: ' + error.message);
             } else {
-                setOutputValue('未知错误');
+                setOutputValue('未知错误: ' + error);
             }
         }
     };
 
+    // 处理输入
     const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         const newInput = event.target.value;
         setInputValue(newInput);
 
-        // 如果输入为空
+        // 如果 newInput 所有内容只有空格或空行，就取消翻译和清空输出
         if (!newInput.trim()) {
             setOutputValue('');
+            cancelTokenRef.current?.cancel('翻译因重新输入而取消');
             return;
         }
 
-        // 如果输入不为空，清除之前的定时器
+        // 如果有新的输入，就取消之前的翻译和定时器避免频繁请求
         if (timeoutRef.current) {
+            cancelTokenRef.current?.cancel('翻译因重新输入而取消');
             clearTimeout(timeoutRef.current);
         }
 
