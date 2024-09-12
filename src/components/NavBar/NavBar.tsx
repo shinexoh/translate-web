@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styles from './NavBar.module.css';
-import { RiGithubFill, RiMoonLine, RiSunLine, RiTranslate2 } from '../SvgIcon';
+import { RiTranslate, RiGithubFill, RiMoonLine, RiSunLine } from '../SvgIcon';
 import { ThemeContext } from '../ThemeProvider';
 
 const NavBar: React.FC = () => {
@@ -16,7 +16,7 @@ const NavBar: React.FC = () => {
 
     return (
         <div className={styles.navBar}>
-            <RiTranslate2 className={styles.logo} />
+            <RiTranslate className={styles.logo} />
             <div className={styles.links}>
                 <button onClick={toGithub}>
                     <RiGithubFill className={styles.link} />
