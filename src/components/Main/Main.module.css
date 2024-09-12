@@ -10,7 +10,7 @@
 
 .inputWrapper {
     flex: 1;
-    padding: 1rem 1rem 10rem;
+    padding: 1rem 1rem 12rem;
     background-color: var(--input-background-color);
 }
 
@@ -41,7 +41,7 @@ hr {
 
 .outputWrapper {
     flex: 1;
-    padding: 1rem 1rem 10rem;
+    padding: 1rem 1rem 12rem;
     background-color: var(--output-background-color);
 }
 
