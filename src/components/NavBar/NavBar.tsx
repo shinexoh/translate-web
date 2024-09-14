@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styles from './NavBar.module.css';
-import { RiTranslate, RiGithubFill, RiMoonLine, RiSunLine } from '../SvgIcon';
+import { RiTranslate, RiGithubFill, RiMoonLine, RiSunLine } from '../SvgIcons';
 import { ThemeContext } from '../ThemeProvider';
 
 const NavBar: React.FC = () => {
