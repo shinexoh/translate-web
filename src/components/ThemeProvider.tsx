@@ -39,6 +39,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         }
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         mediaQuery.onchange = (event: MediaQueryListEvent) => {
+            if (localStorage.getItem('theme')) return;
             const newTheme = event.matches ? 'dark' : 'light';
             document.documentElement.className = newTheme;
             setTheme(newTheme);
