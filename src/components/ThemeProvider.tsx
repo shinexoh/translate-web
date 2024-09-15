@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
-import logoLight from '../assets/logo.svg';
-import logoDark from '../assets/logo-dark.svg';
+import faviconLight from '../assets/favicon.svg';
+import faviconDark from '../assets/favicon-dark.svg';
 
 type Theme = 'light' | 'dark';
 
@@ -50,10 +50,10 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]')!;
         if (mediaQuery.matches) {
-            favicon.href = logoDark;
+            favicon.href = faviconDark;
         }
         mediaQuery.onchange = (event: MediaQueryListEvent) => {
-            favicon.href = event.matches ? logoDark : logoLight;
+            favicon.href = event.matches ? faviconDark : faviconLight;
         };
     };
 
