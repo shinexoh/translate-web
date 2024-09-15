@@ -1,6 +1,6 @@
 import axios, { CancelToken } from 'axios';
 
-export type TranslationResponse = {
+type TranslationResponse = {
     code: number;
     data: string;
     id: number;
