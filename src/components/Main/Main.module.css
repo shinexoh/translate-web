@@ -1,7 +1,7 @@
 .main {
     display: flex;
     width: 95%;
-    max-width: 1080px;
+    max-width: 1280px;
     margin: 10vh auto;
     border-radius: 8px;
     border: 1px solid var(--border-color);
@@ -12,6 +12,7 @@
     flex: 1;
     padding: 1rem 1rem 12rem;
     background-color: var(--input-background-color);
+    position: relative;
 }
 
 .input {
@@ -43,6 +44,7 @@ hr {
     flex: 1;
     padding: 1rem 1rem 12rem;
     background-color: var(--output-background-color);
+    position: relative;
 }
 
 .output {
@@ -64,6 +66,33 @@ hr {
     color: var(--input-placeholder-color);
 }
 
+.inputButtons,
+.outputButtons {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputButtons button,
+.outputButtons button {
+    display: flex;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.4rem;
+    color: var(--icon-button-color);
+}
+
+.inputButtons button:hover,
+.outputButtons button:hover {
+    color: var(--icon-button-hover-color);
+}
+
+
 @media (max-width: 768px) {
     .main {
         width: 90%;
@@ -78,5 +107,10 @@ hr {
     hr {
         height: 1px;
         width: 100%;
+    }
+
+    .inputButtons button,
+    .outputButtons button {
+        font-size: 1.25rem;
     }
 }
