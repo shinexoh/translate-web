@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // 文本转语音
 async function tts(text: string): Promise<void> {
-    // 如果 text 只有空格或空行，就不进行 TTS
+    // 如果 text 只有空格或空行就不进行 TTS
     if (!text.trim()) return;
 
     try {

@@ -48,6 +48,13 @@ const Main: React.FC = () => {
     // 复制翻译结果
     const handleCopy = () => navigator.clipboard.writeText(outputValue);
 
+    // 点击 input 区域的朗读文本按钮时取消焦点
+    const handleInputTts = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation();
+        inputRef.current?.blur();
+        tts(inputValue);
+    };
+
     // 页面加载完成时获取焦点
     useEffect(() => {
         focusInput();
@@ -65,7 +72,7 @@ const Main: React.FC = () => {
                     placeholder="请输入中文，系统将自动翻译为英文"
                 />
                 <div className={styles.inputButtons}>
-                    <button onClick={() => tts(inputValue)}>
+                    <button onClick={handleInputTts}>
                         <RiVolumeUpLine />
                     </button>
                 </div>
