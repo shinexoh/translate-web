@@ -71,7 +71,7 @@ hr {
     color: var(--icon-button-color);
 }
 
-.iconButtons button:hover {
+.iconButtons button svg:hover {
     color: var(--icon-button-hover-color);
 }
 
