@@ -60,6 +60,12 @@ const Main: React.FC = () => {
         focusInput();
     }, []);
 
+    // 当 input 获取焦点时，将光标移动到文本末尾（仅在不手动指定光标位置时生效）
+    const handleInputFocus = (event: React.FocusEvent<HTMLTextAreaElement>) => {
+        const startAndEnd = event.target.value.length;
+        event.target.setSelectionRange(startAndEnd, startAndEnd);
+    };
+
     return (
         <div className={styles.main}>
             <div className={styles.inputWrapper} onClick={focusInput}>
@@ -68,6 +74,7 @@ const Main: React.FC = () => {
                     ref={inputRef}
                     value={inputValue}
                     onInput={handleInput}
+                    onFocus={handleInputFocus}
                     maxLength={2000}
                     placeholder="请输入中文，系统将自动翻译为英文"
                 />
