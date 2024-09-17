@@ -15,7 +15,15 @@
     position: relative;
 }
 
-.input {
+.outputWrapper {
+    flex: 1;
+    padding: 1rem 1rem 12rem;
+    background-color: var(--output-background-color);
+    position: relative;
+}
+
+.input,
+.output {
     width: 100%;
     border: none;
     outline: none;
@@ -29,7 +37,8 @@
     overflow: hidden;
 }
 
-.input::placeholder {
+.input::placeholder,
+.output::placeholder {
     color: var(--input-placeholder-color);
 }
 
@@ -40,34 +49,7 @@ hr {
     margin: 0;
 }
 
-.outputWrapper {
-    flex: 1;
-    padding: 1rem 1rem 12rem;
-    background-color: var(--output-background-color);
-    position: relative;
-}
-
-.output {
-    display: inline-block;
-    width: 100%;
-    font-size: 18px;
-    line-height: 28px;
-    letter-spacing: 0.02em;
-    white-space: pre-wrap;
-    color: var(--input-text-color);
-}
-
-.placeholder {
-    display: inline-block;
-    width: 100%;
-    font-size: 18px;
-    line-height: 28px;
-    letter-spacing: 0.02em;
-    color: var(--input-placeholder-color);
-}
-
-.inputButtons,
-.outputButtons {
+.iconButtons {
     position: absolute;
     left: 1rem;
     right: 1rem;
@@ -76,22 +58,22 @@ hr {
     justify-content: space-between;
 }
 
-.inputButtons button,
-.outputButtons button {
+.iconButtons button {
     display: flex;
     padding: 0;
     border: none;
     background: none;
     cursor: pointer;
+}
+
+.iconButtons button svg {
     font-size: 1.4rem;
     color: var(--icon-button-color);
 }
 
-.inputButtons button:hover,
-.outputButtons button:hover {
+.iconButtons button:hover {
     color: var(--icon-button-hover-color);
 }
-
 
 @media (max-width: 768px) {
     .main {
@@ -109,8 +91,7 @@ hr {
         width: 100%;
     }
 
-    .inputButtons button,
-    .outputButtons button {
+    .iconButtons button svg {
         font-size: 1.25rem;
     }
 }

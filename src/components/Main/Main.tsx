@@ -71,7 +71,7 @@ const Main: React.FC = () => {
                     maxLength={2000}
                     placeholder="请输入中文，系统将自动翻译为英文"
                 />
-                <div className={styles.inputButtons}>
+                <div className={styles.iconButtons}>
                     <button onClick={handleInputTts}>
                         <RiVolumeUpLine />
                     </button>
@@ -79,10 +79,13 @@ const Main: React.FC = () => {
             </div>
             <hr />
             <div className={styles.outputWrapper}>
-                {outputValue
-                    ? <span className={styles.output}>{outputValue}</span>
-                    : <span className={styles.placeholder}>翻译结果</span>}
-                <div className={styles.outputButtons}>
+                <ReactTextareaAutosize
+                    className={styles.output}
+                    value={outputValue}
+                    placeholder="翻译结果"
+                    readOnly
+                />
+                <div className={styles.iconButtons}>
                     <button onClick={() => tts(outputValue)}>
                         <RiVolumeUpLine />
                     </button>
