@@ -29,7 +29,7 @@
     outline: none;
     resize: none;
     background: none;
-    color: var(--input-text-color);
+    color: var(--io-text-color);
     font-size: 18px;
     line-height: 28px;
     letter-spacing: 0.02em;
@@ -39,7 +39,7 @@
 
 .input::placeholder,
 .output::placeholder {
-    color: var(--input-placeholder-color);
+    color: var(--io-placeholder-color);
 }
 
 hr {
@@ -68,11 +68,11 @@ hr {
 
 .iconButtons button svg {
     font-size: 1.4rem;
-    color: var(--icon-button-color);
+    color: var(--io-icon-button-color);
 }
 
 .iconButtons button svg:hover {
-    color: var(--icon-button-hover-color);
+    color: var(--io-icon-button-hover-color);
 }
 
 @media (max-width: 768px) {
