@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import styles from './NavBar.module.css';
-import { RiTranslate, RiGithubFill, RiMoonLine, RiSunLine } from '../SvgIcons';
-import { ThemeContext } from '../ThemeProvider';
+import styles from './navbar.module.css';
+import { RiTranslate, RiGithubFill, RiMoonLine, RiSunLine } from '../svg-icons';
+import { ThemeContext } from '../theme-provider';
 
-const NavBar: React.FC = () => {
+const Navbar: React.FC = () => {
     const themeContext = useContext(ThemeContext);
 
     if (!themeContext) {
@@ -31,4 +31,4 @@ const NavBar: React.FC = () => {
     );
 };
 
-export default NavBar;
+export default Navbar;

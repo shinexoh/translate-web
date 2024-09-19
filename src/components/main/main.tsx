@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import styles from './Main.module.css';
+import styles from './main.module.css';
 import ReactTextareaAutosize from 'react-textarea-autosize';
 import axios, { CancelTokenSource } from 'axios';
-import { RiFileCopyLine, RiVolumeUpLine } from '../SvgIcons';
+import { RiFileCopyLine, RiVolumeUpLine } from '../svg-icons';
 import translation from '../../utils/translation';
 import tts from '../../utils/tts';
 import prefetchRequest from '../../utils/prefetch-request';
