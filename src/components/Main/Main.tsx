@@ -5,6 +5,7 @@ import axios, { CancelTokenSource } from 'axios';
 import { RiFileCopyLine, RiVolumeUpLine } from '../SvgIcons';
 import translation from '../../utils/translation';
 import tts from '../../utils/tts';
+import prefetchRequest from '../../utils/prefetch-request';
 
 const Main: React.FC = () => {
     const [inputValue, setInputValue] = useState('');
@@ -58,6 +59,7 @@ const Main: React.FC = () => {
     // 页面加载完成时获取焦点
     useEffect(() => {
         focusInput();
+        prefetchRequest();
     }, []);
 
     // 当 input 获取焦点时，将光标移动到文本末尾（仅在不手动指定光标位置时生效）

@@ -11,7 +11,7 @@ type TranslationResponse = {
 }
 
 // 翻译
-async function translation(text: string, cancelToken: CancelToken): Promise<string | undefined> {
+async function translation(text: string, cancelToken?: CancelToken): Promise<string | undefined> {
     try {
         const response = await axios.post<TranslationResponse>(
             'https://deeplx.11444.xyz/translate',
