@@ -22,8 +22,7 @@ async function tts(text: string): Promise<void> {
                 source.buffer = buffer;
                 source.connect(audioContext.destination);
                 source.start();
-            }
-            );
+            });
         }
     } catch (error) {
         console.error(error);
