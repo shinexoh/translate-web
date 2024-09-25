@@ -8,10 +8,6 @@ async function prefetchRequest(): Promise<void> {
                 'https://deeplx.11444.xyz/translate',
                 { text: 'Hello World!', target_lang: 'ZH' }
             ),
-            axios.post(
-                'https://oopstts.vercel.app/azure/tts',
-                { text: 'Hello World!', voice: 'zh-CN-YunyangNeural' }
-            )
         ]);
     } catch (error) {
         console.error(error);

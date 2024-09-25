@@ -1,32 +1,22 @@
-import axios from 'axios';
+import { EdgeSpeechTTS } from '@lobehub/tts';
 
 // 文本转语音
 async function tts(text: string): Promise<void> {
     // 如果 text 只有空格或空行就不进行 TTS
     if (!text.trim()) return;
 
-    try {
-        const response = await axios.post(
-            'https://oopstts.vercel.app/azure/tts',
-            {
-                text: text,
-                voice: 'zh-CN-YunyangNeural'
-            },
-            { responseType: 'arraybuffer' }
-        );
-        if (response.status === 200) {
-            // 解析语音数据并播放
-            const audioContext = new AudioContext();
-            audioContext.decodeAudioData(response.data as ArrayBuffer, (buffer) => {
-                const source = audioContext.createBufferSource();
-                source.buffer = buffer;
-                source.connect(audioContext.destination);
-                source.start();
-            });
+    const edgeSpeechTTS = new EdgeSpeechTTS({ locale: 'zh-CN' });
+    const tts = await edgeSpeechTTS.createAudio({
+        input: text,
+        options: {
+            voice: EdgeSpeechTTS.voiceList['zh-CN'][7]
         }
-    } catch (error) {
-        console.error(error);
-    }
+    });
+    const audioContext = new AudioContext();
+    const source = audioContext.createBufferSource();
+    source.buffer = tts;
+    source.connect(audioContext.destination);
+    source.start();
 };
 
 export default tts;

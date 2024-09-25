@@ -14,7 +14,7 @@ Very easy and straightforward to use and develop.
 ## API Dependencies
 
 - [DeepLX-Serverless](https://github.com/guobao2333/DeepLX-Serverless) API for translation
-- [oopstts](https://oopstts.vercel.app/) API for text-to-speech functionality
+- [LobeHub TTS](https://tts.lobehub.com/) for text-to-speech functionality
 
 ## License
 

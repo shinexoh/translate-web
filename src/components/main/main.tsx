@@ -33,11 +33,11 @@ const Main: React.FC = () => {
         // 如果有新的输入，就取消之前的翻译和定时器避免频繁请求
         if (timeoutRef.current) {
             cancelTokenRef.current?.cancel('翻译因重新输入而取消');
-            clearTimeout(timeoutRef.current);
+            window.clearTimeout(timeoutRef.current);
         }
 
         // 在用户停止输入 200ms 后开始翻译
-        timeoutRef.current = setTimeout(async () => {
+        timeoutRef.current = window.setTimeout(async () => {
             cancelTokenRef.current = axios.CancelToken.source();
             const result = await translation(newInput, cancelTokenRef.current.token);
             if (result) {
