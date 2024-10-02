@@ -4,8 +4,8 @@ import ReactTextareaAutosize from 'react-textarea-autosize';
 import axios, { CancelTokenSource } from 'axios';
 import { RiFileCopyLine, RiVolumeUpLine } from '../svg-icons';
 import translation from '../../utils/translation';
-import tts from '../../utils/tts';
 import prefetchRequest from '../../utils/prefetch-request';
+import useTTS from '../../utils/use-tts';
 
 const Main: React.FC = () => {
     const [inputValue, setInputValue] = useState('');
@@ -14,6 +14,8 @@ const Main: React.FC = () => {
     const timeoutRef = useRef<number | null>(null);
     const cancelTokenRef = useRef<CancelTokenSource | null>(null);
     const inputRef = useRef<HTMLTextAreaElement>(null);
+
+    const { tts } = useTTS();
 
     // 获取 input 焦点
     const focusInput = () => inputRef.current?.focus();
@@ -49,7 +51,7 @@ const Main: React.FC = () => {
     // 复制翻译结果
     const handleCopy = () => navigator.clipboard.writeText(outputValue);
 
-    // 点击 input 区域的朗读文本按钮时取消焦点
+    // 点击 input 区域的朗读文本按钮时取消焦点并朗读
     const handleInputTts = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation();
         inputRef.current?.blur();
