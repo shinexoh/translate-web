@@ -18,19 +18,17 @@ function useTTS() {
     const tts = async (text: string) => {
         if (!text.trim()) return;
 
-        clearCurrentAudio();
-
+        source.current?.stop();
         const audioBuffer = await edgeSpeechTTS.current.createAudio({
             input: text,
             options: {
                 voice: EdgeSpeechTTS.voiceList['zh-CN'][7],
             },
         });
-
+        clearCurrentAudio();
         if (!audioContext.current) {
             audioContext.current = new AudioContext();
         }
-
         source.current = audioContext.current.createBufferSource();
         source.current.buffer = audioBuffer;
         source.current.connect(audioContext.current.destination);
