@@ -38,3 +38,7 @@ body {
   padding: 0;
   background-color: var(--background-color);
 }
+
+a {
+  text-decoration: none;
+}
