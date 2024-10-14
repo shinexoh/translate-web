@@ -5,7 +5,7 @@ async function prefetchRequest(): Promise<void> {
     try {
         axios.all([
             axios.post(
-                'https://deeplx.11444.xyz/translate',
+                'https://d.11444.xyz/translate',
                 { text: 'Hello World!', target_lang: 'ZH' }
             ),
         ]);
