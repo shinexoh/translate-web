@@ -1,13 +1,114 @@
+/** @jsxImportSource @emotion/react */
+
 import React, { useEffect, useRef, useState } from 'react';
-import styles from './main.module.css';
 import ReactTextareaAutosize from 'react-textarea-autosize';
 import axios, { CancelTokenSource } from 'axios';
-import { RiFileCopyLine, RiVolumeUpLine } from '../svg-icons';
-import translation from '../../utils/translation';
-import prefetchRequest from '../../utils/prefetch-request';
-import useTTS from '../../utils/use-tts';
+import { RiFileCopyLine, RiVolumeUpLine } from './svg-icons';
+import translation from '../utils/translation';
+import prefetchRequest from '../utils/prefetch-request';
+import useTTS from '../utils/use-tts';
+import { Theme, css } from '@emotion/react';
 
-const Main: React.FC = () => {
+const styles = {
+    wrapper: (theme: Theme) => css({
+        display: 'flex',
+        width: '95%',
+        maxWidth: '1280px',
+        margin: '10vh auto',
+        borderRadius: '8px',
+        border: `1px solid ${theme.colors.borderColor}`,
+        overflow: 'hidden',
+
+        '@media (max-width: 768px)': {
+            width: '90%',
+            flexDirection: 'column',
+        },
+    }),
+
+    inputWrapper: (theme: Theme) => css({
+        flex: 1,
+        padding: '1rem 1rem 12rem',
+        backgroundColor: theme.colors.inputBackgroundColor,
+        position: 'relative',
+
+        '@media (max-width: 768px)': {
+            paddingBottom: '5rem',
+        },
+    }),
+
+    outputWrapper: (theme: Theme) => css({
+        flex: 1,
+        padding: '1rem 1rem 12rem',
+        backgroundColor: theme.colors.outputBackgroundColor,
+        position: 'relative',
+
+        '@media (max-width: 768px)': {
+            paddingBottom: '5rem',
+        },
+    }),
+
+    textarea: (theme: Theme) => css({
+        width: '100%',
+        border: 'none',
+        outline: 'none',
+        resize: 'none',
+        background: 'none',
+        color: theme.colors.ioTextColor,
+        fontSize: '18px',
+        lineHeight: '28px',
+        letterSpacing: '0.02em',
+        padding: 0,
+        overflow: 'hidden',
+
+        '&::placeholder': {
+            color: theme.colors.ioPlaceholderColor,
+        },
+    }),
+
+    hr: (theme: Theme) => css({
+        width: '1px',
+        border: 'none',
+        backgroundColor: theme.colors.borderColor,
+        margin: 0,
+
+        '@media (max-width: 768px)': {
+            height: '1px',
+            width: '100%',
+        },
+    }),
+
+    iconButtons: (theme: Theme) => css({
+        position: 'absolute',
+        left: '1rem',
+        right: '1rem',
+        bottom: '1rem',
+        display: 'flex',
+        justifyContent: 'space-between',
+
+        '& button': {
+            display: 'flex',
+            padding: 0,
+            border: 'none',
+            background: 'none',
+            cursor: 'pointer',
+        },
+
+        '& button svg': {
+            fontSize: '1.4rem',
+            color: theme.colors.ioIconButtonColor,
+
+            '&:hover': {
+                color: theme.colors.ioIconButtonHoverColor,
+            },
+
+            '@media (max-width: 768px)': {
+                fontSize: '1.25rem',
+            },
+        }
+    }),
+};
+
+const Body: React.FC = () => {
     const [inputValue, setInputValue] = useState('');
     const [outputValue, setOutputValue] = useState('');
 
@@ -71,10 +172,10 @@ const Main: React.FC = () => {
     };
 
     return (
-        <div className={styles.main}>
-            <div className={styles.inputWrapper} onClick={focusInput}>
+        <div css={styles.wrapper}>
+            <div css={styles.inputWrapper} onClick={focusInput}>
                 <ReactTextareaAutosize
-                    className={styles.input}
+                    css={styles.textarea}
                     ref={inputRef}
                     value={inputValue}
                     onInput={handleInput}
@@ -82,29 +183,31 @@ const Main: React.FC = () => {
                     maxLength={2000}
                     placeholder="请输入中文，系统将自动翻译为英文"
                 />
-                <div className={styles.iconButtons}>
+                <div css={styles.iconButtons}>
                     <button onClick={handleInputTts}>
                         <RiVolumeUpLine />
                     </button>
                 </div>
             </div>
-            <hr />
-            <div className={styles.outputWrapper}>
+            <hr css={styles.hr} />
+            <div css={styles.outputWrapper}>
                 <ReactTextareaAutosize
-                    className={styles.output}
+                    css={styles.textarea}
                     value={outputValue}
                     placeholder="翻译结果"
                     readOnly
                 />
-                <div className={styles.iconButtons}>
+                <div css={styles.iconButtons}>
                     <button onClick={() => tts(outputValue)}>
                         <RiVolumeUpLine />
                     </button>
-                    <button onClick={handleCopy}><RiFileCopyLine /></button>
+                    <button onClick={handleCopy}>
+                        <RiFileCopyLine />
+                    </button>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Main;
+export default Body;

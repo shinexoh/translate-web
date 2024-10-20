@@ -1,6 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react';
 import faviconLight from '../assets/favicon.svg';
 import faviconDark from '../assets/favicon-dark.svg';
+import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
+import { lightTheme, darkTheme } from '../themes';
 
 type Theme = 'light' | 'dark';
 
@@ -73,11 +75,16 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         setTheme(newTheme);
     };
 
+    const currentTheme = theme === 'light' ? lightTheme : darkTheme;
+
     return (
         <ThemeContext.Provider value={{ theme: theme, toggleTheme: toggleTheme }}>
-            {children}
+            <EmotionThemeProvider theme={currentTheme}>
+                {children}
+            </EmotionThemeProvider>
         </ThemeContext.Provider>
     );
 };
 
-export { ThemeContext, ThemeProvider };
+export default ThemeProvider;
+export { ThemeContext };
