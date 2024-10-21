@@ -24,13 +24,10 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     const initialTheme = () => {
         const savedTheme = localStorage.getItem('theme') as Theme | null;
         if (savedTheme) {
-            document.documentElement.className = savedTheme;
             setTheme(savedTheme);
         } else {
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const theme = prefersDark ? 'dark' : 'light';
-            document.documentElement.className = theme;
-            setTheme(theme);
+            setTheme(prefersDark ? 'dark' : 'light');
         }
     };
 
@@ -42,9 +39,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         mediaQuery.onchange = (event: MediaQueryListEvent) => {
             if (localStorage.getItem('theme')) return;
-            const newTheme = event.matches ? 'dark' : 'light';
-            document.documentElement.className = newTheme;
-            setTheme(newTheme);
+            setTheme(event.matches ? 'dark' : 'light');
         };
     };
 
@@ -68,10 +63,8 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
     // 点击切换主题
     const toggleTheme = () => {
-        const currentTheme = document.documentElement.className;
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        const newTheme = theme === 'light' ? 'dark' : 'light';
         localStorage.setItem('theme', newTheme);
-        document.documentElement.className = newTheme;
         setTheme(newTheme);
     };
 
