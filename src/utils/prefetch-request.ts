@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// 预加载请求，预先请求翻译和TTS Api，提高后续请求响应速度
+// 预加载请求，预先请求翻译Api，提高后续请求响应速度
 async function prefetchRequest(): Promise<void> {
     try {
         axios.all([
