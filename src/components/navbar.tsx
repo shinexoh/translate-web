@@ -3,7 +3,7 @@
 import React, { useContext } from 'react';
 import { RiTranslate, RiGithubFill, RiMoonLine, RiSunLine } from './svg-icons';
 import { ThemeContext } from './theme-provider';
-import { Theme, css } from '@emotion/react';
+import { type Theme, css } from '@emotion/react';
 
 const styles = {
     wrapper: (theme: Theme) => css({

@@ -1,4 +1,4 @@
-import { css, Theme } from '@emotion/react';
+import { type Theme, css } from '@emotion/react';
 
 // 全局样式
 const globalStyles = (theme: Theme) => css({

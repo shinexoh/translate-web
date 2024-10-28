@@ -7,7 +7,7 @@ import { RiFileCopyLine, RiVolumeUpLine } from './svg-icons';
 import translation from '../utils/translation';
 import prefetchRequest from '../utils/prefetch-request';
 import useTTS from '../utils/use-tts';
-import { Theme, css } from '@emotion/react';
+import { type Theme, css } from '@emotion/react';
 
 const styles = {
     wrapper: (theme: Theme) => css({
