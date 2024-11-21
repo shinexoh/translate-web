@@ -1,9 +1,9 @@
+import { Global } from '@emotion/react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import ThemeProvider from './components/theme-provider.tsx';
-import { Global } from '@emotion/react';
-import { globalStyles } from './themes';
 import App from './App.tsx';
+import ThemeProvider from './components/theme-provider.tsx';
+import { globalStyles } from './themes';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -11,5 +11,5 @@ createRoot(document.getElementById('root')!).render(
       <Global styles={globalStyles} />
       <App />
     </ThemeProvider>
-  </StrictMode>
+  </StrictMode>,
 );

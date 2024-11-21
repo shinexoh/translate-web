@@ -1,45 +1,20 @@
-import js from '@eslint/js';
-import globals from 'globals';
-import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
-import tseslint from 'typescript-eslint';
+import antfu from '@antfu/eslint-config';
 
-export default tseslint.config(
-  { ignores: ['dist'] },
-  {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx,js,jsx}'],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-    },
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-    },
-    rules: {
-      'quotes': ['warn', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }],
-      'semi': ['warn', 'always'],
-      'eol-last': ['warn', 'always'],
-      'no-multiple-empty-lines': ['warn', { max: 1, maxBOF: 0, maxEOF: 0 }],
-      'no-trailing-spaces': ['warn'],
-      '@typescript-eslint/no-unused-vars': [
-        'warn',
-        {
-          'args': 'all',
-          'argsIgnorePattern': '^_',
-          'caughtErrors': 'all',
-          'caughtErrorsIgnorePattern': '^_',
-          'destructuredArrayIgnorePattern': '^_',
-          'varsIgnorePattern': '^_',
-          'ignoreRestSiblings': true
-        }
-      ],
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+export default antfu({
+  stylistic: {
+    semi: true,
+    overrides: {
+      /**
+       * 在对象字面量中
+       * 如果属性名是合法的标识符 则使用标识符作为属性名 否则使用引号作为属性名
+       */
+      'style/quote-props': ['error', 'as-needed', { numbers: true }],
+      'style/brace-style': ['error', '1tbs', { allowSingleLine: true }],
     },
   },
-);
+  react: true,
+  jsonc: false,
+  yaml: false,
+  toml: false,
+  markdown: false,
+});
