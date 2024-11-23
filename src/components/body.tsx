@@ -1,8 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
-import type { CancelTokenSource } from 'axios';
 import { css, type Theme } from '@emotion/react';
-import axios from 'axios';
+import axios, { type CancelTokenSource } from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import ReactTextareaAutosize from 'react-textarea-autosize';
 import prefetchRequest from '../utils/prefetch-request';
